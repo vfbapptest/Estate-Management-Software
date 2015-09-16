@@ -6,7 +6,7 @@ build:
         - script:
             name: create jar
             code: |
-                tar -cf Petroleum-C-Store.jar Petroleum-C-Store
+                tar -cf Estate-Management-Software.jar Estate-Management-Software
         - script:
             name: Petroleum-C-Store
             code: |            
@@ -21,6 +21,6 @@ build:
             draft: true
         - github-upload-asset:
             token: $git_token
-            file: Petroleum-C-Store.jar
+            file: Estate-Management-Software.jar
             filename: app-v1.0.0.jar
             content-type: application/java-archive
