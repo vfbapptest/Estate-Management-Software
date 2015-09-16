@@ -1,28 +1,26 @@
-# This references a standard debian container from the
-# Docker Hub https://registry.hub.docker.com/_/debian/
-# Read more about containers on our dev center
-# http://devcenter.wercker.com/docs/containers/index.html
 box: debian
-# You can also use services such as databases. Read more on our dev center:
-# http://devcenter.wercker.com/docs/services/index.html
-# services:
-    # - postgres
-    # http://devcenter.wercker.com/docs/services/postgresql.html
 
-    # - mongodb
-    # http://devcenter.wercker.com/docs/services/mongodb.html
-
-# This is the build pipeline. Pipelines are the core of wercker
-# Read more about pipelines on our dev center
-# http://devcenter.wercker.com/docs/pipelines/index.html
 build:
   # The steps that will be executed on build
   steps:
-  - script:
-        name: Estate-Management-Software
-        code: |            
-            tar -cvf Estate-Management-Software.jar Estate-Management-Software
-            ls -lart
-            sudo apt-get update
-            sudo apt-get install python-software-properties curl wget -y
-            sudo apt-get update
+        - script:
+            name: create jar
+            code: |
+                tar -cf Petroleum-C-Store.jar Petroleum-C-Store
+        - script:
+            name: Petroleum-C-Store
+            code: |            
+                ls -lart
+                sudo apt-get update
+                sudo apt-get install python-software-properties curl wget -y
+                sudo apt-get update
+        - github-create-release:
+            token: $git_token
+            tag: v1.0.0
+            title: Application v1.0.0
+            draft: true
+        - github-upload-asset:
+            token: $git_token
+            file: Petroleum-C-Store.jar
+            filename: app-v1.0.0.jar
+            content-type: application/java-archive
