@@ -22,7 +22,7 @@ def divide(x, y):
    return x / y
 
 # take input from the user
-print("Select operation.")
+print("Select operation please.")
 print("1.Add")
 print("2.Subtract")
 print("3.Multiply")
