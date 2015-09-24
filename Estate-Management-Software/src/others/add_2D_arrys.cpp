@@ -19,7 +19,7 @@ int main(){
 
 /* Storing elements of second matrix entered by user. */
 
-    cout << endl << "Enter elements of 2nd matrix: " << endl;
+    cout << endl << "Enter elements of 2nd matrix one: " << endl;
     for(i=0;i<r;++i)
        for(j=0;j<c;++j)
        {
